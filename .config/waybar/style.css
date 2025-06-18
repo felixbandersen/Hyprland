@@ -49,7 +49,7 @@ window#waybar.hidden {
 #workspaces button.urgent {
   background-color: #f38ba8;
 }
-
+#cpu,
 #memory,
 #custom-power,
 #battery,
@@ -76,6 +76,9 @@ window#waybar.hidden {
   font-size: 15px;
   border-radius: 8px 0px 0px 8px;
   color: #1793d1;
+}
+#cpu {
+  background-color: #b8ff97;
 }
 
 #memory {
