@@ -10,6 +10,7 @@ Repository for personal dotfiles and docker image for running Hyprland in distro
 - rofi-wayland
 - waybar
 - xdg-desktop-portal-hyprland (screen share)
+- syspower
 
 ## NVIDIA Docker
 
