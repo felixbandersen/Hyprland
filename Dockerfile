@@ -223,6 +223,9 @@ RUN pacman -S --noconfirm \
     python-lsp-server \
     helix 
 
+# NVIDIA Packages
+RUN pacman -U --noconfirm \
+    https://archive.archlinux.org/packages/n/nvidia-utils/nvidia-utils-570.144-3-x86_64.pkg.tar.zst
 
 # tools and utility cli/shell/scm/find/rust-rewrites
 RUN pacman -S --noconfirm \
@@ -272,7 +275,6 @@ RUN pacman -S --noconfirm \
 # Fonts
 RUN pacman -S --noconfirm \
     ttf-dejavu \
-    ttf-font-awesome \
     ttf-font-awesome \
     ttf-inconsolata \
     ttf-iosevka-nerd
