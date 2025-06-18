@@ -289,6 +289,7 @@ RUN pacman -S --noconfirm \
     hyprlock \
     hyprpaper \
     hyprpicker \
+    syspower \
     imv \
     mpv \
     xcb-util \
