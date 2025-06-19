@@ -1,5 +1,8 @@
 FROM docker.io/library/archlinux:latest AS builder
+
 ARG SOURCE_DATE_EPOCH=0
+ARG NVIDIA_VERSION=570.86.16-2
+
 RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -Syy
 
 # Misc
@@ -180,7 +183,6 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     stfl \
     sudo \
     sysfsutils \
-    taplo \
     terminus-font \
     tmux \
     tree \
@@ -196,7 +198,6 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     w3m \
     webrtc-audio-processing \
     wget \
-    wget \
     xdg-utils \
     xvidcore \
     xz \
@@ -210,13 +211,22 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
 # Languages/lsp/lint/editors
 RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     stylua \
+    bash-language-server \
+    vscode-css-languageserver \
+    vscode-html-languageserver \
+    vscode-json-languageserver \
     yaml-language-server \
     bash-language-server \
     ansible-language-server \
+    marksman \
+    taplo \
     python-black \
     python-lsp-server \
     helix 
 
+# NVIDIA Packages
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -U --noconfirm \
+    https://archive.archlinux.org/packages/n/nvidia-utils/nvidia-utils-$NVIDIA_VERSION-x86_64.pkg.tar.zst
 
 # tools and utility cli/shell/scm/find/rust-rewrites
 RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
@@ -252,6 +262,7 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
 
 # Gui apps terminal/viewers/www
 RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
+    libreoffice-fresh \
     mattermost-desktop \
     gimp \
     asciinema \
@@ -266,7 +277,6 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
 RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     ttf-dejavu \
     ttf-font-awesome \
-    ttf-font-awesome \
     ttf-inconsolata \
     ttf-iosevka-nerd
 
@@ -280,6 +290,7 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     hyprlock \
     hyprpaper \
     hyprpicker \
+    #syspower \
     imv \
     mpv \
     xcb-util \
@@ -293,6 +304,7 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     xkeyboard-config \
     xorg-server-common \
     wl-clipboard \
+    #wlroots \
     wlsunset \
     wofi \
     waybar \
@@ -300,8 +312,7 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     dunst \
     swaync \
     xorg-xwayland \
-    fastfetch \
-    nvidia-utils
+    hyfetch
 
 #install host-spawn
 RUN wget "https://github.com/1player/host-spawn/releases/download/v1.6.0/host-spawn-x86_64" -O /usr/bin/host-spawn
