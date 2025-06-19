@@ -290,7 +290,6 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     hyprlock \
     hyprpaper \
     hyprpicker \
-    #syspower \
     imv \
     mpv \
     xcb-util \
@@ -304,7 +303,6 @@ RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     xkeyboard-config \
     xorg-server-common \
     wl-clipboard \
-    #wlroots \
     wlsunset \
     wofi \
     waybar \
