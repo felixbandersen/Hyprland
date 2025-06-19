@@ -1,10 +1,9 @@
 FROM docker.io/library/archlinux:latest AS builder
 ARG SOURCE_DATE_EPOCH=0
-RUN pacman -Syy
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -Syy
 
 # Misc
-RUN pacman -S --noconfirm \
-    libnotify \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     e2fsprogs \
     file \
     gettext \
@@ -87,7 +86,6 @@ RUN pacman -S --noconfirm \
     jansson \
     jbig2dec \
     jq \
-    systemd \
     systemd-sysvcompat \
     json-c \
     jsoncpp \
@@ -182,6 +180,7 @@ RUN pacman -S --noconfirm \
     stfl \
     sudo \
     sysfsutils \
+    taplo \
     terminus-font \
     tmux \
     tree \
@@ -209,26 +208,18 @@ RUN pacman -S --noconfirm \
     zstd
 
 # Languages/lsp/lint/editors
-RUN pacman -S --noconfirm \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     stylua \
-    bash-language-server \
-    vscode-css-languageserver \
-    vscode-html-languageserver \
-    vscode-json-languageserver \
     yaml-language-server \
+    bash-language-server \
     ansible-language-server \
-    marksman \
-    taplo \
     python-black \
     python-lsp-server \
     helix 
 
-# NVIDIA Packages
-RUN pacman -U --noconfirm \
-    https://archive.archlinux.org/packages/n/nvidia-utils/nvidia-utils-570.144-3-x86_64.pkg.tar.zst
 
 # tools and utility cli/shell/scm/find/rust-rewrites
-RUN pacman -S --noconfirm \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     btop \
     htop \
     git \
@@ -243,14 +234,14 @@ RUN pacman -S --noconfirm \
     glances
 
 # Debugging inspection/network scanner
-RUN pacman -S --noconfirm \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     nmap \
     netscanner \
     lurk \
     strace
     
 # media
-RUN pacman -S --noconfirm \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     imagemagick \
     obs-studio \
     pipewire \
@@ -259,9 +250,8 @@ RUN pacman -S --noconfirm \
     neovim \
     ffmpeg
 
-# Gui apps terminal/viewers/www/docs
-RUN pacman -S --noconfirm \
-    libreoffice-fresh \
+# Gui apps terminal/viewers/www
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     mattermost-desktop \
     gimp \
     asciinema \
@@ -273,14 +263,15 @@ RUN pacman -S --noconfirm \
     chromium
 
 # Fonts
-RUN pacman -S --noconfirm \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     ttf-dejavu \
+    ttf-font-awesome \
     ttf-font-awesome \
     ttf-inconsolata \
     ttf-iosevka-nerd
 
 # Hyprland/wayland/portals/x11 stuff
-RUN pacman -S --noconfirm \
+RUN --mount=type=cache,target=/var/cache/pacman/pkg pacman -S --noconfirm \
     hyperfine \
     rofi-wayland \
     hyprcursor \
@@ -289,7 +280,6 @@ RUN pacman -S --noconfirm \
     hyprlock \
     hyprpaper \
     hyprpicker \
-    syspower \
     imv \
     mpv \
     xcb-util \
@@ -303,18 +293,19 @@ RUN pacman -S --noconfirm \
     xkeyboard-config \
     xorg-server-common \
     wl-clipboard \
-    wlroots \
     wlsunset \
     wofi \
     waybar \
     mako \
     dunst \
     swaync \
-    xorg-xwayland
+    xorg-xwayland \
+    fastfetch \
+    nvidia-utils
 
 #install host-spawn
 RUN wget "https://github.com/1player/host-spawn/releases/download/v1.6.0/host-spawn-x86_64" -O /usr/bin/host-spawn
 RUN chmod +x /usr/bin/host-spawn
 
-#FROM scratch
-#COPY --from=builder / / 
+FROM scratch
+COPY --from=builder / / 
