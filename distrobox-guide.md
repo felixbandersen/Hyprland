@@ -22,7 +22,7 @@ dsitrobox create --image <IMAGE_NAME> --name archlinux --init
 distrobox-enter archlinux
 
 set access:
-- sudo usermod -aG input,video,tty,adm <USERNAME>
+- sudo usermod -aG input,video,tty,adm USERNAME
 - uso chmod 0770 /dev/tty*
 
 sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd
