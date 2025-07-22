@@ -4,7 +4,7 @@ Guide for setting up Hyprland in container usable from any distro!
 ## Step 1:
 
 ```
-export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/host/run/user/$(id -u)/bus
 export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/host/var/run/dbus/system_bus_socket
 export DBX_CONTAINER_MANAGER=docker
 ```
