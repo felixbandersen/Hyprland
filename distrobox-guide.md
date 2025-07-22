@@ -26,15 +26,16 @@ distrobox-enter archlinux
 ```
 
 set access:
-
+sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd
+sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd-launch
 ```
 sudo usermod -aG input,video,tty,adm USERNAME
 sudo chmod 0770 /dev/tty*
 ```
 
 ```
-sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd
-sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd-launch
+sudo sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd
+sudo sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd-launch
 ```
 
 ```
