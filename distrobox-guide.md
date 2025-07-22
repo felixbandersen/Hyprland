@@ -16,6 +16,10 @@ pkill wireplumber
 ```
 
 ```
+sudo chmod 0770 /dev/tty*
+```
+
+```
 dsitrobox create --image <IMAGE_NAME> --name archlinux --init
 ```
 
@@ -26,8 +30,12 @@ distrobox-enter archlinux
 ```
 
 set access:
+
+```
 sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd
 sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd-launch
+```
+
 ```
 sudo usermod -aG input,video,tty,adm USERNAME
 sudo chmod 0770 /dev/tty*
