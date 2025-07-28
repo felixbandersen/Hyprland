@@ -78,3 +78,14 @@ sudo sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd-launch
 ```
 
 
+## Troubleshooting
+
+If you get error "non-socket file found at socket path /run/seatd.sock"
+
+Run these:
+
+```
+sudo rm /run/seatd.sock
+sudo systemctl restart seatd
+```
+
