@@ -14,14 +14,14 @@ pkill pipewire
 pkill pipewire-pulse
 pkill wireplumber
 ```
+```
+distrobox create --image <IMAGE_NAME> --name archlinux --init
+```
 
 ```
 sudo chmod 0770 /dev/tty*
 ```
 
-```
-dsitrobox create --image <IMAGE_NAME> --name archlinux --init
-```
 
 ## Step 2:
 
@@ -36,11 +36,35 @@ sudo usermod -aG input,video,tty,adm USERNAME
 sudo chmod 0770 /dev/tty*
 ```
 
+### Important for Authentication to work
+
+```
+sudo seatd -g tty #To promt root password
+
+```
+then CTRL+C to abort
+
+```
+sudo seatd -g tty & #Run in background
+```
+
+## Step 3
+
+Run Hyprland
+
+```
+Hyprland
+```
+
+
+
+### Podman
+
+This step is important for podman (not in use yet). Do not run these for podman
+
 ```
 sudo sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd
 sudo sed "s#/run/seatd.sock#/tmp/seatd.sock#g" -i /usr/sbin/seatd-launch
 ```
 
-```
-seatd-launch Hyprland
-```
+
