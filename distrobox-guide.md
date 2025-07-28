@@ -49,7 +49,7 @@ sudo seatd -g tty & #Run in background
 
 
 For hyprlock to work, you may have to change /etc/pam.d/hyprlock
-```
+``` bash
 #auth include login Change from this
 auth include system-auth #To this
 ```
