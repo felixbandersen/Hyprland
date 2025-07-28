@@ -47,6 +47,14 @@ then CTRL+C to abort
 sudo seatd -g tty & #Run in background
 ```
 
+
+For hyprlock to work, you may have to change /etc/pam.d/hyprlock
+```
+#auth include login Change from this
+auth include system-auth #To this
+```
+
+
 ## Step 3
 
 Run Hyprland
