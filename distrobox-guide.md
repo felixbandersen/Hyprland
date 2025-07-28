@@ -40,7 +40,6 @@ sudo chmod 0770 /dev/tty*
 
 ```
 sudo seatd -g tty #To promt root password
-
 ```
 then CTRL+C to abort
 
