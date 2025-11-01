@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "/bin/python",
+    "python-envs.pythonProjects": [
+        
+    ],
+    "workbench.tree.indent": 24
+}

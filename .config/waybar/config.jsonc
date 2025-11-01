@@ -13,7 +13,9 @@
     "modules-right": [
         "tray",
         "cpu",
+        "custom/gpu-usage",
         "memory",
+        "disk",
         "network",
         "wireplumber",
         "battery",
@@ -49,14 +51,26 @@
     },
     "cpu": {
         "interval": 5,
-        "format": "󰍛  {usage}%",
+        "format": "CPU: {usage}%",
         "on-click": "kitty -e btop &",
         "max-length": 10
     },
+    "custom/gpu-usage": {
+        "exec": "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent",
+        "format": "GPU: {}%",
+        "return-type": "",
+        "interval": 5
+    },
     "memory": {
         "interval": 5,
-        "format": "󰍛 {}%",
+        "format": "MEM: {}%",
         "max-length": 10
+    },
+    "disk": {
+        "path": "/",
+        "interval": 30,
+        "format": "DISK: {used} / {total} ({percentage_used}%)",
+        "tooltip-format": "{used} used out of {total} ({percentage_used}%)"
     },
     "tray": {
         "spacing": 10
@@ -91,6 +105,7 @@
             "default": ["󰖀","󰕾",""]
         },
         "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol",
         "scroll-step": 1
     },
     "custom/logo": {
