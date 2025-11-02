@@ -50,7 +50,9 @@ window#waybar.hidden {
   background-color: #f38ba8;
 }
 #cpu,
+#custom-gpu-usage,
 #memory,
+#disk,
 #custom-power,
 #battery,
 #backlight,
@@ -80,9 +82,14 @@ window#waybar.hidden {
 #cpu {
   background-color: #b8ff97;
 }
-
+#custom-gpu-usage {
+  background-color: #ffd900;
+}
 #memory {
   background-color: #fab387;
+}
+#disk {
+  background-color: #00ff88;
 }
 
 #battery {
