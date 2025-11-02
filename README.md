@@ -2,19 +2,65 @@
 
 Repository for personal dotfiles and docker image for running Hyprland in distrobox with nvidia
 
-## Prerequisites
+## Required Packages (PACMAN)
 
-- hyprland
-- hyprlock
-- hypridle
-- rofi-wayland
-- waybar
-- xdg-desktop-portal-hyprland (screen share)
-- syspower
-- ttf-font-awesome 
-- ttf-dejavu ?
-- ttf-inconsolata ?
-- ttf-iosevka-nerd ?
+```
+sudo pacman -S \ 
+    bat \
+    fish \
+    less \
+    hyprcursor \
+    hypridle \
+    hyprlock \
+    hyprpaper \
+    hyprshot \
+    rofi-wayland \
+    pipewire \
+    pipewire-alsa \
+    pipewire-audio \
+    pipewire-jack \
+    pipewire-pulse \
+    xdg-desktop-portal-hyprland \
+    ttf-font-awesome \
+    ttf-dejavu \
+    ttf-inconsolata \
+    ttf-iosevka-nerd 
+```
+### Required Packages (YAY)
+
+Install yay [here](https://github.com/Jguer/yay) first
+
+
+```
+yay -S syspower
+```
+
+### Optional packages
+
+```
+sudo pacman -S \
+    pavucontrol \
+    flatpak \
+    discord \
+    docker \
+    docker-compose 
+```
+
+### Docker
+
+If you installed docker you might have to start the socket:
+
+```
+sudo systemctl start docker.socket
+sudo systemctl enable docker.socket
+```
+
+To give your user access without sudo:
+
+```
+usermod -aG docker $USER
+```
+
 
 
 ## Distrobox
