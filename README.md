@@ -5,8 +5,7 @@ Repository for personal dotfiles and docker image for running Hyprland in distro
 ## Required Packages (PACMAN)
 
 ```
-sudo pacman -S \ 
-    bat \
+sudo pacman -S bat \ 
     fish \
     less \
     hyprcursor \
@@ -14,6 +13,8 @@ sudo pacman -S \
     hyprlock \
     hyprpaper \
     hyprshot \
+    waybar \
+    swaync \
     rofi-wayland \
     pipewire \
     pipewire-alsa \
@@ -24,7 +25,10 @@ sudo pacman -S \
     ttf-font-awesome \
     ttf-dejavu \
     ttf-inconsolata \
-    ttf-iosevka-nerd 
+    ttf-iosevka-nerd \
+    ttf-material-icons \
+    otf-font-awesome \
+    power-profiles-daemon
 ```
 ### Required Packages (YAY)
 
@@ -32,19 +36,28 @@ Install yay [here](https://github.com/Jguer/yay) first
 
 
 ```
-yay -S syspower
+yay -S wlogout
+    
+```
+
+### Required Flatpak packages
+
+```
+flatpak install flathub codes.loers.Karlender
 ```
 
 ### Optional packages
 
 ```
-sudo pacman -S \
-    pavucontrol \
+sudo pacman -S pavucontrol \
     flatpak \
     discord \
     docker \
     docker-compose 
 ```
+
+
+
 
 ### Docker
 
