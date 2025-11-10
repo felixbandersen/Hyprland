@@ -5,7 +5,8 @@ Repository for personal dotfiles and docker image for running Hyprland in distro
 ## Required Packages (PACMAN)
 
 ```
-sudo pacman -S bat \ 
+sudo pacman -S bat \
+    jq \
     fish \
     less \
     hyprcursor \
